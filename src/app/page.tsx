@@ -1,65 +1,204 @@
-import Image from "next/image";
+import Link from "next/link";
+import ParticleHero from "@/components/ParticleHero";
+import OISMediaButtons from "@/components/OISMediaButtons";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <>
+      {/* Hero */}
+      <section className="relative flex flex-col items-center justify-center px-6 py-40 text-center overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-accent/5 via-transparent to-transparent pointer-events-none" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-accent/8 blur-[120px] pointer-events-none" />
+
+        <ParticleHero />
+
+        <div className="relative z-10">
+          <p className="mb-4 text-sm font-mono tracking-widest text-accent uppercase">
+            Your idea. Our engineering.
           </p>
+          <h1 className="max-w-3xl text-5xl font-bold leading-tight tracking-tight sm:text-7xl">
+            We turn ideas into{" "}
+            <span className="text-accent drop-shadow-[0_0_20px_rgba(0,255,136,0.3)]">
+              products
+            </span>
+            .
+          </h1>
+          <p className="mt-6 max-w-xl mx-auto text-lg text-foreground/60">
+            Got an app idea but no tech team?{" "}
+            <span className="font-mono font-semibold text-foreground/80">0xTech</span>{" "}
+            designs, builds, and launches software products — from first
+            prototype to production. You bring the vision, we bring the code.
+          </p>
+          <div className="mt-10 flex flex-wrap gap-4 justify-center">
+            <Link
+              href="/contact"
+              className="rounded-full bg-accent px-8 py-3 text-sm font-semibold text-background transition-all hover:bg-accent-dim hover:shadow-[0_0_24px_rgba(0,255,136,0.4)]"
+            >
+              Tell Us Your Idea
+            </Link>
+            <Link
+              href="/roadmap"
+              className="rounded-full border border-accent/30 px-8 py-3 text-sm font-semibold transition-all hover:border-accent hover:text-accent hover:shadow-[0_0_24px_rgba(0,255,136,0.15)]"
+            >
+              See What We&apos;re Building
+            </Link>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      {/* How it works */}
+      <section className="mx-auto max-w-6xl px-6 pb-24">
+        <h2 className="text-center text-2xl font-bold sm:text-3xl">
+          From concept to launch in 3 steps
+        </h2>
+        <div className="mt-12 grid gap-6 sm:grid-cols-3">
+          {[
+            {
+              step: "01",
+              title: "Share Your Idea",
+              desc: "Tell us what you want to build. We'll help you refine scope, define features, and map out the tech stack.",
+            },
+            {
+              step: "02",
+              title: "We Build It",
+              desc: "Our team designs, develops, and tests your product with weekly updates and full transparency.",
+            },
+            {
+              step: "03",
+              title: "Launch & Scale",
+              desc: "We deploy to production, set up infrastructure, and support you as your user base grows.",
+            },
+          ].map((item) => (
+            <div
+              key={item.step}
+              className="group rounded-2xl border border-card-border bg-card-bg p-8 transition-all hover:border-accent/40 hover:shadow-[0_0_30px_rgba(0,255,136,0.06)]"
+            >
+              <span className="text-3xl font-black font-mono text-accent/30 group-hover:text-accent/60 transition-colors">
+                {item.step}
+              </span>
+              <h3 className="mt-3 mb-2 text-lg font-semibold group-hover:text-accent transition-colors">
+                {item.title}
+              </h3>
+              <p className="text-sm leading-relaxed text-foreground/60">
+                {item.desc}
+              </p>
+            </div>
+          ))}
         </div>
-      </main>
-    </div>
+      </section>
+
+      {/* What we offer */}
+      <section className="mx-auto max-w-6xl px-6 pb-24">
+        <h2 className="text-center text-2xl font-bold sm:text-3xl">
+          What we bring to the table
+        </h2>
+        <div className="mt-12 grid gap-6 sm:grid-cols-3">
+          {[
+            {
+              title: "Full-Stack Development",
+              desc: "Web apps, mobile apps, APIs, dashboards — whatever your product needs, built with modern tech.",
+            },
+            {
+              title: "Cloud & Infrastructure",
+              desc: "Scalable hosting on AWS, GCP, or Azure with CI/CD, monitoring, and 99.9% uptime.",
+            },
+            {
+              title: "Product Strategy",
+              desc: "We don't just write code — we help you prioritize features, validate ideas, and ship what matters.",
+            },
+          ].map((item) => (
+            <div
+              key={item.title}
+              className="group rounded-2xl border border-card-border bg-card-bg p-8 transition-all hover:border-accent/40 hover:shadow-[0_0_30px_rgba(0,255,136,0.06)]"
+            >
+              <h3 className="mb-3 text-lg font-semibold group-hover:text-accent transition-colors">
+                {item.title}
+              </h3>
+              <p className="text-sm leading-relaxed text-foreground/60">
+                {item.desc}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Currently building — LexRech */}
+      <section className="mx-auto max-w-4xl px-6 pb-12">
+        <div className="rounded-2xl border border-accent/20 bg-gradient-to-br from-accent/5 to-transparent p-10">
+          <div className="flex flex-col items-center text-center sm:flex-row sm:text-left sm:items-start sm:gap-8">
+            <div className="flex-1">
+              <p className="text-sm font-mono tracking-widest text-accent uppercase mb-2">
+                Currently building
+              </p>
+              <h2 className="text-2xl font-bold">LexRech</h2>
+              <p className="mt-3 text-sm leading-relaxed text-foreground/60">
+                A complete law firm management platform for the German market.
+                XRechnung invoicing, beA court integration, client portal, GDPR
+                compliance tools, DATEV export, and case management — everything
+                a law firm needs, on one platform.
+              </p>
+              <div className="mt-6 flex flex-wrap gap-3 justify-center sm:justify-start">
+                <a
+                  href="https://lexrech.de"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-full border border-accent/30 px-5 py-2 text-xs font-medium text-accent transition-all hover:bg-accent/10"
+                >
+                  Visit lexrech.de &rarr;
+                </a>
+                <Link
+                  href="/roadmap"
+                  className="rounded-full border border-card-border px-5 py-2 text-xs font-medium text-foreground/50 transition-all hover:border-accent/30 hover:text-accent"
+                >
+                  Full Roadmap
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Coming next — OIS */}
+      <section className="mx-auto max-w-4xl px-6 pb-24">
+        <div className="rounded-2xl border border-accent/20 bg-gradient-to-br from-accent/5 to-transparent p-10">
+          <div className="text-center sm:text-left">
+            <p className="text-sm font-mono tracking-widest text-accent uppercase mb-2">
+              Coming next
+            </p>
+            <h2 className="text-2xl font-bold">
+              OIS — Opportunity Intelligence System
+            </h2>
+            <p className="mt-3 text-sm leading-relaxed text-foreground/60">
+              An AI platform that studies proven startup models in advanced
+              markets (Germany, USA, UK), cross-references them with local
+              realities, and generates VC-grade opportunity dossiers for
+              emerging markets — starting with Morocco. What takes traditional
+              market research 2–4 weeks, OIS delivers in under 5 minutes.
+            </p>
+          </div>
+
+          <OISMediaButtons />
+        </div>
+      </section>
+
+      {/* Bottom CTA */}
+      <section className="px-6 pb-24">
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className="text-3xl font-bold sm:text-4xl">
+            Ready to build something?
+          </h2>
+          <p className="mt-4 text-foreground/60">
+            Whether it&apos;s a SaaS app, a marketplace, an internal tool, or
+            something entirely new — we&apos;d love to hear about it.
+          </p>
+          <Link
+            href="/contact"
+            className="mt-8 inline-flex rounded-full bg-accent px-10 py-4 text-sm font-semibold text-background transition-all hover:bg-accent-dim hover:shadow-[0_0_24px_rgba(0,255,136,0.4)]"
+          >
+            Let&apos;s Talk About Your Idea
+          </Link>
+        </div>
+      </section>
+    </>
   );
 }
