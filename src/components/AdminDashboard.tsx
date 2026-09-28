@@ -114,7 +114,7 @@ export default function AdminDashboard() {
         </div>
         <button
           onClick={handleLogin}
-          className="rounded-full bg-accent px-8 py-3 text-sm font-semibold text-background transition-all hover:bg-accent-dim hover:shadow-[0_0_24px_rgba(0,255,136,0.4)]"
+          className="rounded-full bg-accent px-8 py-3 text-sm font-semibold text-background transition-all hover:bg-accent-dim hover:shadow-[0_0_24px_rgba(86,172,49,0.4)]"
         >
           Sign in with Google
         </button>
@@ -204,7 +204,7 @@ export default function AdminDashboard() {
               className={`rounded-2xl border bg-card-bg p-6 transition-all ${
                 c.read
                   ? "border-card-border opacity-70"
-                  : "border-accent/30 shadow-[0_0_20px_rgba(0,255,136,0.04)]"
+                  : "border-accent/30 shadow-[0_0_20px_rgba(86,172,49,0.04)]"
               }`}
             >
               <div className="flex flex-wrap items-start justify-between gap-3 mb-3">

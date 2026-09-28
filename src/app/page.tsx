@@ -18,7 +18,7 @@ export default function Home() {
           </p>
           <h1 className="max-w-3xl text-5xl font-bold leading-tight tracking-tight sm:text-7xl">
             We turn ideas into{" "}
-            <span className="text-accent drop-shadow-[0_0_20px_rgba(0,255,136,0.3)]">
+            <span className="text-accent drop-shadow-[0_0_20px_rgba(86,172,49,0.3)]">
               products
             </span>
             .
@@ -32,13 +32,13 @@ export default function Home() {
           <div className="mt-10 flex flex-wrap gap-4 justify-center">
             <Link
               href="/contact"
-              className="rounded-full bg-accent px-8 py-3 text-sm font-semibold text-background transition-all hover:bg-accent-dim hover:shadow-[0_0_24px_rgba(0,255,136,0.4)]"
+              className="rounded-full bg-accent px-8 py-3 text-sm font-semibold text-background transition-all hover:bg-accent-dim hover:shadow-[0_0_24px_rgba(86,172,49,0.4)]"
             >
               Tell Us Your Idea
             </Link>
             <Link
               href="/roadmap"
-              className="rounded-full border border-accent/30 px-8 py-3 text-sm font-semibold transition-all hover:border-accent hover:text-accent hover:shadow-[0_0_24px_rgba(0,255,136,0.15)]"
+              className="rounded-full border border-accent/30 px-8 py-3 text-sm font-semibold transition-all hover:border-accent hover:text-accent hover:shadow-[0_0_24px_rgba(86,172,49,0.15)]"
             >
               See What We&apos;re Building
             </Link>
@@ -71,7 +71,7 @@ export default function Home() {
           ].map((item) => (
             <div
               key={item.step}
-              className="group rounded-2xl border border-card-border bg-card-bg p-8 transition-all hover:border-accent/40 hover:shadow-[0_0_30px_rgba(0,255,136,0.06)]"
+              className="group rounded-2xl border border-card-border bg-card-bg p-8 transition-all hover:border-accent/40 hover:shadow-[0_0_30px_rgba(86,172,49,0.06)]"
             >
               <span className="text-3xl font-black font-mono text-accent/30 group-hover:text-accent/60 transition-colors">
                 {item.step}
@@ -109,7 +109,7 @@ export default function Home() {
           ].map((item) => (
             <div
               key={item.title}
-              className="group rounded-2xl border border-card-border bg-card-bg p-8 transition-all hover:border-accent/40 hover:shadow-[0_0_30px_rgba(0,255,136,0.06)]"
+              className="group rounded-2xl border border-card-border bg-card-bg p-8 transition-all hover:border-accent/40 hover:shadow-[0_0_30px_rgba(86,172,49,0.06)]"
             >
               <h3 className="mb-3 text-lg font-semibold group-hover:text-accent transition-colors">
                 {item.title}
@@ -193,7 +193,7 @@ export default function Home() {
           </p>
           <Link
             href="/contact"
-            className="mt-8 inline-flex rounded-full bg-accent px-10 py-4 text-sm font-semibold text-background transition-all hover:bg-accent-dim hover:shadow-[0_0_24px_rgba(0,255,136,0.4)]"
+            className="mt-8 inline-flex rounded-full bg-accent px-10 py-4 text-sm font-semibold text-background transition-all hover:bg-accent-dim hover:shadow-[0_0_24px_rgba(86,172,49,0.4)]"
           >
             Let&apos;s Talk About Your Idea
           </Link>

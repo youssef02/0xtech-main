@@ -176,10 +176,10 @@ export default function ParticleHero() {
           // Draw particle — glow effect for larger ones
           if (p.radius > 1.8) {
             gfx.circle(p.x, p.y, p.radius + 3);
-            gfx.fill({ color: 0x00ff88, alpha: p.alpha * 0.15 });
+            gfx.fill({ color: 0x56ac31, alpha: p.alpha * 0.15 });
           }
           gfx.circle(p.x, p.y, p.radius);
-          gfx.fill({ color: 0x00ff88, alpha: p.alpha });
+          gfx.fill({ color: 0x56ac31, alpha: p.alpha });
         }
 
         // --- Draw connections with smooth fade ---
@@ -204,7 +204,7 @@ export default function ParticleHero() {
               if (next > 0.005) {
                 gfx.moveTo(a.x, a.y);
                 gfx.lineTo(b.x, b.y);
-                gfx.stroke({ color: 0x00ff88, alpha: next, width: next > 0.15 ? 1.5 : 1 });
+                gfx.stroke({ color: 0x56ac31, alpha: next, width: next > 0.15 ? 1.5 : 1 });
               }
             }
           }
@@ -223,7 +223,7 @@ export default function ParticleHero() {
               const b = particles[parseInt(jStr)];
               gfx.moveTo(a.x, a.y);
               gfx.lineTo(b.x, b.y);
-              gfx.stroke({ color: 0x00ff88, alpha: next, width: 1 });
+              gfx.stroke({ color: 0x56ac31, alpha: next, width: 1 });
             }
           }
         }

@@ -56,7 +56,7 @@ export default function Services() {
         {services.map((svc) => (
           <div
             key={svc.title}
-            className="group rounded-2xl border border-card-border bg-card-bg p-8 transition-all hover:border-accent/40 hover:shadow-[0_0_30px_rgba(0,255,136,0.06)]"
+            className="group rounded-2xl border border-card-border bg-card-bg p-8 transition-all hover:border-accent/40 hover:shadow-[0_0_30px_rgba(86,172,49,0.06)]"
           >
             <h2 className="text-xl font-semibold group-hover:text-accent transition-colors">{svc.title}</h2>
             <p className="mt-3 text-sm leading-relaxed text-foreground/60">
@@ -86,7 +86,7 @@ export default function Services() {
         </p>
         <Link
           href="/contact"
-          className="mt-8 inline-flex rounded-full bg-accent px-10 py-4 text-sm font-semibold text-background transition-all hover:bg-accent-dim hover:shadow-[0_0_24px_rgba(0,255,136,0.4)]"
+          className="mt-8 inline-flex rounded-full bg-accent px-10 py-4 text-sm font-semibold text-background transition-all hover:bg-accent-dim hover:shadow-[0_0_24px_rgba(86,172,49,0.4)]"
         >
           Get a Free Consultation
         </Link>

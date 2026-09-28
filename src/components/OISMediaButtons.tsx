@@ -29,7 +29,7 @@ export default function OISMediaButtons() {
         <button
           type="button"
           onClick={() => setOpen("video")}
-          className="rounded-full bg-accent px-6 py-2.5 text-xs font-semibold text-background transition-all hover:bg-accent-dim hover:shadow-[0_0_24px_rgba(0,255,136,0.4)]"
+          className="rounded-full bg-accent px-6 py-2.5 text-xs font-semibold text-background transition-all hover:bg-accent-dim hover:shadow-[0_0_24px_rgba(86,172,49,0.4)]"
         >
           Watch demo
         </button>
@@ -52,7 +52,7 @@ export default function OISMediaButtons() {
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            className="relative w-full max-w-5xl max-h-full rounded-2xl border border-accent/20 bg-background shadow-[0_0_60px_rgba(0,255,136,0.08)] overflow-hidden flex flex-col"
+            className="relative w-full max-w-5xl max-h-full rounded-2xl border border-accent/20 bg-background shadow-[0_0_60px_rgba(86,172,49,0.08)] overflow-hidden flex flex-col"
           >
             <button
               type="button"

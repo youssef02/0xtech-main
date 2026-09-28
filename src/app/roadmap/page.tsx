@@ -76,7 +76,7 @@ const milestones: Milestone[] = [
 const statusConfig: Record<Status, { label: string; dotClass: string; badgeClass: string }> = {
   "in-progress": {
     label: "In Development",
-    dotClass: "bg-accent shadow-[0_0_8px_rgba(0,255,136,0.6)]",
+    dotClass: "bg-accent shadow-[0_0_8px_rgba(86,172,49,0.6)]",
     badgeClass: "border-accent/40 text-accent",
   },
   upcoming: {
@@ -125,7 +125,7 @@ export default function Roadmap() {
                 <div
                   className={`rounded-2xl border bg-card-bg p-6 transition-all ${
                     m.status === "in-progress"
-                      ? "border-accent/30 shadow-[0_0_30px_rgba(0,255,136,0.06)]"
+                      ? "border-accent/30 shadow-[0_0_30px_rgba(86,172,49,0.06)]"
                       : "border-card-border"
                   }`}
                 >
@@ -157,7 +157,7 @@ export default function Roadmap() {
                       href={m.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-4 inline-flex items-center gap-1.5 rounded-full border border-accent/30 px-4 py-1.5 text-xs font-medium text-accent transition-all hover:bg-accent/10 hover:shadow-[0_0_16px_rgba(0,255,136,0.15)]"
+                      className="mt-4 inline-flex items-center gap-1.5 rounded-full border border-accent/30 px-4 py-1.5 text-xs font-medium text-accent transition-all hover:bg-accent/10 hover:shadow-[0_0_16px_rgba(86,172,49,0.15)]"
                     >
                       Visit lexrech.de &rarr;
                     </a>
@@ -182,7 +182,7 @@ export default function Roadmap() {
         </p>
         <Link
           href="/contact"
-          className="mt-8 inline-flex rounded-full bg-accent px-8 py-3 text-sm font-semibold text-background transition-all hover:bg-accent-dim hover:shadow-[0_0_24px_rgba(0,255,136,0.4)]"
+          className="mt-8 inline-flex rounded-full bg-accent px-8 py-3 text-sm font-semibold text-background transition-all hover:bg-accent-dim hover:shadow-[0_0_24px_rgba(86,172,49,0.4)]"
         >
           Start a Conversation
         </Link>
