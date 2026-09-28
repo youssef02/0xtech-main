@@ -4,10 +4,10 @@ import OISMediaButtons from "@/components/OISMediaButtons";
 
 export const metadata: Metadata = {
   title: "Roadmap",
-  description: "See what 0xTech is building — our product roadmap from LexRech to 6 planned apps.",
+  description: "See what 0xTech is building — our product roadmap from LexRech, Quris, OIS, XFunds, and Taxy.",
   openGraph: {
     title: "Roadmap — 0xTech",
-    description: "See what 0xTech is building — our product roadmap from LexRech to 6 planned apps.",
+    description: "See what 0xTech is building — our product roadmap from LexRech, Quris, OIS, XFunds, and Taxy.",
     url: "https://0xtech.dev/roadmap",
   },
 };
@@ -19,7 +19,6 @@ interface Milestone {
   title: string;
   description: string;
   status: Status;
-  target: string;
   link?: string;
   id?: string;
 }
@@ -31,45 +30,42 @@ const milestones: Milestone[] = [
     description:
       "Complete practice management software for German law firms. XRechnung-compliant invoicing, beA court communication, client portal, GDPR/DSGVO compliance suite, DATEV export, time tracking, and case management — all in one platform.",
     status: "in-progress",
-    target: "Q2 2026",
     link: "https://lexrech.de",
   },
   {
-    id: "ois",
     phase: "Phase 2",
+    title: "Quris — AI Medical Imaging for Prostate Cancer",
+    description:
+      "Deep-learning analysis of PSMA-PET/CT scans. Automated lesion detection, TNM staging, and tumor burden quantification — cutting manual scan analysis from ~30 minutes to under 1 minute, with an interactive 3D web viewer and PACS integration.",
+    status: "upcoming",
+  },
+  {
+    id: "ois",
+    phase: "Phase 3",
     title: "OIS — Opportunity Intelligence System",
     description:
       "An AI platform that analyzes proven startup models in advanced markets (Germany, USA, UK) and generates validated, localized opportunity dossiers for emerging markets — starting with Morocco. Scans, extracts, maps, scores, and compiles VC-grade reports in under 5 minutes instead of the 2–4 weeks classic market research takes.",
     status: "upcoming",
-    target: "Q3 2026",
-  },
-  {
-    phase: "Phase 3",
-    title: "App #3 — To Be Announced",
-    description: "Planned for development after the second product launch.",
-    status: "planned",
-    target: "Q4 2026",
   },
   {
     phase: "Phase 4",
-    title: "App #4 — To Be Announced",
-    description: "Expanding the 0xTech product ecosystem.",
-    status: "planned",
-    target: "Q1 2027",
+    title: "XFunds — Alternative Investment Fund Administration",
+    description:
+      "Multi-tenant platform for hedge funds, private equity, VC, and real estate funds. Full fund lifecycle: NAV tracking, capital calls and distributions, double-entry accounting, high-water-mark fee engine, and a compliance engine covering AIFMD, SEC, FCA, and MAS.",
+    status: "upcoming",
   },
   {
     phase: "Phase 5",
-    title: "App #5 — To Be Announced",
-    description: "Further diversification into new verticals.",
-    status: "planned",
-    target: "Q2 2027",
+    title: "Taxy — Ride-Hailing for Morocco",
+    description:
+      "Real-time ride-sharing platform for the Moroccan market. Live driver tracking, OSRM road-following routes, in-app chat, wallet payments in MAD, and a driver earnings dashboard.",
+    status: "upcoming",
   },
   {
     phase: "Phase 6",
     title: "App #6 — To Be Announced",
     description: "Completing the initial 0xTech product suite.",
     status: "planned",
-    target: "Q3 2027",
   },
 ];
 
@@ -137,9 +133,6 @@ export default function Roadmap() {
                       className={`rounded-full border px-2.5 py-0.5 text-xs font-medium ${config.badgeClass}`}
                     >
                       {config.label}
-                    </span>
-                    <span className="text-xs text-foreground/30 ml-auto font-mono">
-                      {m.target}
                     </span>
                   </div>
                   <h2

@@ -1,6 +1,5 @@
 import Link from "next/link";
 import ParticleHero from "@/components/ParticleHero";
-import OISMediaButtons from "@/components/OISMediaButtons";
 
 export default function Home() {
   return (
@@ -158,7 +157,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Coming next — OIS */}
+      {/* Coming next — Quris */}
       <section className="mx-auto max-w-4xl px-6 pb-24">
         <div className="rounded-2xl border border-accent/20 bg-gradient-to-br from-accent/5 to-transparent p-10">
           <div className="text-center sm:text-left">
@@ -166,18 +165,23 @@ export default function Home() {
               Coming next
             </p>
             <h2 className="text-2xl font-bold">
-              OIS — Opportunity Intelligence System
+              Quris — AI Medical Imaging for Prostate Cancer
             </h2>
             <p className="mt-3 text-sm leading-relaxed text-foreground/60">
-              An AI platform that studies proven startup models in advanced
-              markets (Germany, USA, UK), cross-references them with local
-              realities, and generates VC-grade opportunity dossiers for
-              emerging markets — starting with Morocco. What takes traditional
-              market research 2–4 weeks, OIS delivers in under 5 minutes.
+              Deep-learning analysis of PSMA-PET/CT scans. Automated lesion
+              detection, TNM staging, and tumor burden quantification — cutting
+              manual scan analysis from ~30 minutes to under 1 minute, with an
+              interactive 3D web viewer and PACS integration.
             </p>
+            <div className="mt-6 flex flex-wrap gap-3 justify-center sm:justify-start">
+              <Link
+                href="/products"
+                className="rounded-full border border-accent/30 px-5 py-2 text-xs font-medium text-accent transition-all hover:bg-accent/10"
+              >
+                View all products &rarr;
+              </Link>
+            </div>
           </div>
-
-          <OISMediaButtons />
         </div>
       </section>
 
