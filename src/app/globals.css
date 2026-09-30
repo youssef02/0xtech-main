@@ -58,3 +58,8 @@ body {
   color: var(--accent);
   text-shadow: 0 0 16px rgba(86, 172, 49, 0.3);
 }
+
+@keyframes carousel-progress {
+  from { width: 0%; }
+  to   { width: 100%; }
+}
