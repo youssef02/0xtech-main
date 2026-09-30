@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import OISMediaButtons from "@/components/OISMediaButtons";
+import TaxyShowcase from "@/components/TaxyShowcase";
 
 export const metadata: Metadata = {
   title: "Products",
@@ -25,6 +26,8 @@ interface Product {
   status: Status;
   features: string[];
   images?: { src: string; alt: string }[];
+  /** Renders a bespoke animated media block instead of the plain image stack. */
+  showcase?: "taxy";
   link?: { href: string; label: string };
   oisMedia?: boolean;
   placeholder?: boolean;
@@ -74,8 +77,9 @@ const products: Product[] = [
     ],
     images: [
       { src: "/products/quris-landing.png", alt: "Quris landing page" },
-      { src: "/products/quris-viewer.png", alt: "Quris 3D DICOM viewer" },
-      { src: "/products/quris-analysis.png", alt: "Quris AI analysis" },
+      { src: "/products/quris-viewer.png", alt: "Quris 3D volume rendering with tumor overlay" },
+      { src: "/products/quris-analysis.png", alt: "Quris AI analysis: lesion detection, tumor burden, TNM staging" },
+      { src: "/products/quris-mip.png", alt: "Quris whole-body MIP with skeletal lesion segmentation" },
     ],
   },
   {
@@ -113,7 +117,12 @@ const products: Product[] = [
       "Fee engine (high-water mark)",
       "Compliance engine (AIFMD/SEC/FCA)",
     ],
-    placeholder: true,
+    images: [
+      { src: "/products/xfunds-funds.png", alt: "XFunds fund overview with AUM and commitments" },
+      { src: "/products/xfunds-fund-detail.png", alt: "XFunds fund detail with NAV, IRR and multiple" },
+      { src: "/products/xfunds-capital-calls.png", alt: "XFunds capital calls tracking" },
+      { src: "/products/xfunds-accounting.png", alt: "XFunds double-entry fund accounting" },
+    ],
   },
   {
     id: "taxy",
@@ -132,9 +141,7 @@ const products: Product[] = [
       "Wallet payments (MAD)",
       "Driver earnings dashboard",
     ],
-    images: [
-      { src: "/products/taxy-app.png", alt: "Taxy mobile app preview" },
-    ],
+    showcase: "taxy",
   },
 ];
 
@@ -240,7 +247,9 @@ export default function Products() {
 
                 {/* Media */}
                 <div>
-                  {product.images ? (
+                  {product.showcase === "taxy" ? (
+                    <TaxyShowcase />
+                  ) : product.images ? (
                     <div className="space-y-4">
                       {product.images.map((img) => (
                         <div
