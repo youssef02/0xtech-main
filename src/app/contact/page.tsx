@@ -30,7 +30,11 @@ export default function Contact() {
 
         {/* Contact Info */}
         <div className="space-y-8">
-          <div className="rounded-2xl border border-card-border bg-card-bg p-6">
+          <div className="group rounded-2xl border border-card-border bg-card-bg p-6 transition-all duration-500 hover:border-accent/30">
+            <div className="mb-4 flex items-center gap-4">
+              <span className="font-mono text-xs text-foreground/30">01</span>
+              <span className="h-px flex-1 bg-card-border transition-colors duration-500 group-hover:bg-accent/25" />
+            </div>
             <h2 className="text-lg font-semibold">What happens next?</h2>
             <ol className="mt-4 space-y-3 text-sm text-foreground/60">
               <li className="flex gap-3">

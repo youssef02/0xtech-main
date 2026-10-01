@@ -53,12 +53,21 @@ export default function Services() {
       </p>
 
       <div className="mt-16 grid gap-8 sm:grid-cols-2">
-        {services.map((svc) => (
+        {services.map((svc, i) => (
           <div
             key={svc.title}
-            className="group rounded-2xl border border-card-border bg-card-bg p-8 transition-all hover:border-accent/40 hover:shadow-[0_0_30px_rgba(86,172,49,0.06)]"
+            className="group rounded-2xl border border-card-border bg-card-bg p-8 transition-all duration-500 hover:-translate-y-1 hover:border-accent/40 hover:shadow-[0_12px_40px_-12px_rgba(86,172,49,0.2)]"
           >
-            <h2 className="text-xl font-semibold group-hover:text-accent transition-colors">{svc.title}</h2>
+            {/* Index rule, matching the products page */}
+            <div className="mb-5 flex items-center gap-4">
+              <span className="font-mono text-xs text-foreground/30">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <span className="h-px flex-1 bg-card-border transition-colors duration-500 group-hover:bg-accent/25" />
+            </div>
+            <h2 className="text-xl font-semibold transition-colors group-hover:text-accent">
+              {svc.title}
+            </h2>
             <p className="mt-3 text-sm leading-relaxed text-foreground/60">
               {svc.description}
             </p>
@@ -66,7 +75,7 @@ export default function Services() {
               {svc.features.map((f) => (
                 <li
                   key={f}
-                  className="rounded-full border border-card-border px-3 py-1 text-xs text-foreground/50"
+                  className="cursor-default rounded-full border border-card-border px-3 py-1 text-xs text-foreground/50 transition-all duration-300 hover:-translate-y-0.5 hover:border-accent/40 hover:text-foreground/80"
                 >
                   {f}
                 </li>
@@ -74,6 +83,34 @@ export default function Services() {
             </ul>
           </div>
         ))}
+      </div>
+
+      {/* Proof — the services claim is backed by the suite */}
+      <div className="mt-16 rounded-2xl border border-card-border bg-card-bg p-8 sm:p-10">
+        <div className="flex flex-wrap items-center justify-between gap-6">
+          <div className="max-w-xl">
+            <p className="mb-2 font-mono text-xs tracking-widest text-accent uppercase">
+              We do this for ourselves too
+            </p>
+            <h2 className="text-xl font-semibold">
+              Five products built with exactly this process
+            </h2>
+            <p className="mt-2.5 text-sm leading-relaxed text-foreground/55">
+              Legal tech, medical imaging, market intelligence, fund
+              administration and mobility — scoped, built and shipped in-house.
+              The same team does your project.
+            </p>
+          </div>
+          <Link
+            href="/products"
+            className="group/p inline-flex shrink-0 items-center gap-2 rounded-full border border-accent/30 px-6 py-2.5 text-xs font-semibold text-accent transition-all hover:bg-accent/10"
+          >
+            See the work
+            <span className="transition-transform duration-300 group-hover/p:translate-x-1">
+              &rarr;
+            </span>
+          </Link>
+        </div>
       </div>
 
       {/* CTA */}

@@ -5,19 +5,40 @@ import { createPortal } from "react-dom";
 
 type Modal = "video" | "deck" | null;
 
+/** Slides rendered from ois-presentation.pdf at build time. */
+const DECK_SLIDES = Array.from(
+  { length: 11 },
+  (_, i) => `/deck/slide-${String(i + 1).padStart(2, "0")}.png`,
+);
+
 export default function OISMediaButtons() {
   const [open, setOpen] = useState<Modal>(null);
+  const [slide, setSlide] = useState(0);
   // Portalling needs the DOM, so only after mount — keeps SSR output identical.
   const [mounted, setMounted] = useState(false);
 
   const close = useCallback(() => setOpen(null), []);
+  const step = useCallback(
+    (d: number) =>
+      setSlide((i) => Math.min(DECK_SLIDES.length - 1, Math.max(0, i + d))),
+    [],
+  );
 
   useEffect(() => setMounted(true), []);
 
   useEffect(() => {
     if (!open) return;
+    if (open === "deck") setSlide(0);
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") close();
+      if (open !== "deck") return;
+      if (e.key === "ArrowRight") {
+        e.preventDefault();
+        step(1);
+      } else if (e.key === "ArrowLeft") {
+        e.preventDefault();
+        step(-1);
+      }
     };
     document.addEventListener("keydown", onKey);
     const prev = document.body.style.overflow;
@@ -26,7 +47,7 @@ export default function OISMediaButtons() {
       document.removeEventListener("keydown", onKey);
       document.body.style.overflow = prev;
     };
-  }, [open, close]);
+  }, [open, close, step]);
 
   return (
     <>
@@ -98,11 +119,76 @@ export default function OISMediaButtons() {
                 Your browser does not support the video tag.
               </video>
             ) : (
-              <iframe
-                src="/ois-presentation.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH"
-                title="OIS — Opportunity Intelligence System pitch deck"
-                className="w-full h-[85vh]"
-              />
+              /* Slides are images, not an embedded PDF. An <iframe> only
+                 renders a PDF where the browser has a built-in viewer
+                 enabled — elsewhere, and on virtually every mobile
+                 browser, it silently downloads the file instead. */
+              <div className="flex flex-col">
+                <div className="relative bg-black">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={DECK_SLIDES[slide]}
+                    alt={`OIS pitch deck — slide ${slide + 1} of ${DECK_SLIDES.length}`}
+                    className="max-h-[78vh] w-full object-contain"
+                  />
+
+                  {slide > 0 && (
+                    <button
+                      type="button"
+                      onClick={() => step(-1)}
+                      aria-label="Previous slide"
+                      className="absolute top-1/2 left-3 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full border border-white/15 bg-black/60 text-foreground/80 backdrop-blur transition-all hover:border-accent/50 hover:text-accent"
+                    >
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                        <polyline points="15 18 9 12 15 6" />
+                      </svg>
+                    </button>
+                  )}
+                  {slide < DECK_SLIDES.length - 1 && (
+                    <button
+                      type="button"
+                      onClick={() => step(1)}
+                      aria-label="Next slide"
+                      className="absolute top-1/2 right-3 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full border border-white/15 bg-black/60 text-foreground/80 backdrop-blur transition-all hover:border-accent/50 hover:text-accent"
+                    >
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                        <polyline points="9 18 15 12 9 6" />
+                      </svg>
+                    </button>
+                  )}
+                </div>
+
+                <div className="flex flex-wrap items-center justify-between gap-4 border-t border-card-border px-5 py-3">
+                  <div className="flex items-center gap-1.5">
+                    {DECK_SLIDES.map((src, i) => (
+                      <button
+                        key={src}
+                        type="button"
+                        onClick={() => setSlide(i)}
+                        aria-label={`Slide ${i + 1}`}
+                        aria-current={i === slide}
+                        className={`h-1.5 rounded-full transition-all duration-300 ${
+                          i === slide
+                            ? "w-5 bg-accent"
+                            : "w-1.5 bg-foreground/25 hover:bg-foreground/50"
+                        }`}
+                      />
+                    ))}
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <span className="font-mono text-xs text-foreground/45">
+                      {slide + 1} / {DECK_SLIDES.length}
+                    </span>
+                    <a
+                      href="/ois-presentation.pdf"
+                      download
+                      className="text-xs font-medium text-foreground/50 transition-colors hover:text-accent"
+                    >
+                      Download PDF
+                    </a>
+                  </div>
+                </div>
+              </div>
             )}
           </div>
           </div>,

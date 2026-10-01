@@ -62,7 +62,7 @@ export default function ContactForm() {
           id="name"
           name="name"
           required
-          className="mt-1 w-full rounded-lg border border-card-border bg-card-bg px-4 py-3 text-sm text-foreground placeholder-foreground/30 outline-none transition-colors focus:border-accent"
+          className="mt-1 w-full rounded-lg border border-card-border bg-card-bg px-4 py-3 text-sm text-foreground placeholder-foreground/30 outline-none transition-all duration-300 hover:border-foreground/25 focus:border-accent focus:ring-2 focus:ring-accent/20"
           placeholder="Your name"
         />
       </div>
@@ -75,7 +75,7 @@ export default function ContactForm() {
           id="email"
           name="email"
           required
-          className="mt-1 w-full rounded-lg border border-card-border bg-card-bg px-4 py-3 text-sm text-foreground placeholder-foreground/30 outline-none transition-colors focus:border-accent"
+          className="mt-1 w-full rounded-lg border border-card-border bg-card-bg px-4 py-3 text-sm text-foreground placeholder-foreground/30 outline-none transition-all duration-300 hover:border-foreground/25 focus:border-accent focus:ring-2 focus:ring-accent/20"
           placeholder="you@company.com"
         />
       </div>
@@ -88,7 +88,7 @@ export default function ContactForm() {
           name="message"
           rows={5}
           required
-          className="mt-1 w-full rounded-lg border border-card-border bg-card-bg px-4 py-3 text-sm text-foreground placeholder-foreground/30 outline-none transition-colors focus:border-accent resize-none"
+          className="mt-1 w-full rounded-lg border border-card-border bg-card-bg px-4 py-3 text-sm text-foreground placeholder-foreground/30 outline-none transition-all duration-300 hover:border-foreground/25 focus:border-accent focus:ring-2 focus:ring-accent/20 resize-none"
           placeholder="I want to build an app that..."
         />
       </div>
