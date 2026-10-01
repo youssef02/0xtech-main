@@ -1,13 +1,18 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 
 type Modal = "video" | "deck" | null;
 
 export default function OISMediaButtons() {
   const [open, setOpen] = useState<Modal>(null);
+  // Portalling needs the DOM, so only after mount — keeps SSR output identical.
+  const [mounted, setMounted] = useState(false);
 
   const close = useCallback(() => setOpen(null), []);
+
+  useEffect(() => setMounted(true), []);
 
   useEffect(() => {
     if (!open) return;
@@ -42,14 +47,19 @@ export default function OISMediaButtons() {
         </button>
       </div>
 
-      {open && (
-        <div
-          role="dialog"
-          aria-modal="true"
-          aria-label={open === "video" ? "OIS demo video" : "OIS pitch deck"}
-          onClick={close}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-background/85 backdrop-blur-sm p-4 sm:p-8 animate-in fade-in"
-        >
+      {/* Portalled to <body>: an ancestor with position:sticky creates a
+          stacking context, which would otherwise trap this behind siblings
+          no matter how high its z-index is. */}
+      {open &&
+        mounted &&
+        createPortal(
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-label={open === "video" ? "OIS demo video" : "OIS pitch deck"}
+            onClick={close}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-background/85 backdrop-blur-sm p-4 sm:p-8 animate-in fade-in"
+          >
           <div
             onClick={(e) => e.stopPropagation()}
             className="relative w-full max-w-5xl max-h-full rounded-2xl border border-accent/20 bg-background shadow-[0_0_60px_rgba(86,172,49,0.08)] overflow-hidden flex flex-col"
@@ -95,8 +105,9 @@ export default function OISMediaButtons() {
               />
             )}
           </div>
-        </div>
-      )}
+          </div>,
+          document.body,
+        )}
     </>
   );
 }
