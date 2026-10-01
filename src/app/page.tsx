@@ -1,6 +1,64 @@
 import Link from "next/link";
 import ParticleHero from "@/components/ParticleHero";
 
+/**
+ * The suite, as the home page tells it: a name, the sector it sits in, where it
+ * is, and one screenshot so the claim is visible rather than asserted.
+ * The full write-up and the screenshot carousels live on /products.
+ */
+const suite = [
+  {
+    id: "lexrech",
+    name: "LexRech",
+    domain: "Legal",
+    status: "building" as const,
+    blurb:
+      "Practice management for German law firms — XRechnung invoicing, beA court filing, DATEV export, time tracking and GDPR tooling on one platform.",
+    shot: "/products/lexrech-dashboard.png",
+    shotAlt: "LexRech firm dashboard showing matters, unbilled hours and revenue",
+  },
+  {
+    id: "quris",
+    name: "Quris",
+    domain: "Health",
+    status: "next" as const,
+    blurb:
+      "Deep-learning PSMA-PET/CT analysis — lesion detection, TNM staging and tumour burden in under a minute, with a 3D DICOM viewer in the browser.",
+    shot: "/products/quris-landing.png",
+    shotAlt: "Quris landing page with its interactive 3D anatomy hero",
+  },
+  {
+    id: "ois",
+    name: "OIS",
+    domain: "Intelligence",
+    status: "next" as const,
+    blurb:
+      "Studies proven startup models in Germany, the US and the UK and compiles VC-grade opportunity dossiers for emerging markets in five minutes.",
+    shot: null,
+    shotAlt: "",
+  },
+  {
+    id: "xfunds",
+    name: "XFunds",
+    domain: "Finance",
+    status: "next" as const,
+    blurb:
+      "Fund administration for hedge, PE, VC and real estate — NAV tracking, capital calls, double-entry accounting and an AIFMD/SEC/FCA compliance engine.",
+    shot: "/products/xfunds-funds.png",
+    shotAlt: "XFunds fund overview showing AUM and committed capital",
+  },
+  {
+    id: "taxy",
+    name: "Taxy",
+    domain: "Mobility",
+    status: "next" as const,
+    blurb:
+      "Real-time ride-hailing for Morocco — live matching over WebSocket, OSRM road-following routes, in-app chat and wallet payments in MAD.",
+    shot: "/products/taxy-card.png",
+    shotAlt: "Taxy rider and driver apps side by side",
+  },
+];
+
 export default function Home() {
   return (
     <>
@@ -41,6 +99,33 @@ export default function Home() {
             >
               See What We&apos;re Building
             </Link>
+          </div>
+
+          {/* Proof bar — the suite, named, before anyone has to scroll. */}
+          <div className="mt-16 border-t border-white/8 pt-6">
+            <p className="mb-4 font-mono text-[0.68rem] tracking-[0.18em] text-foreground/35 uppercase">
+              Five products in build
+            </p>
+            <ul className="flex flex-wrap items-center justify-center gap-x-7 gap-y-3">
+              {suite.map((p) => (
+                <li key={p.id}>
+                  <Link
+                    href={`/products#${p.id}`}
+                    className="group/p flex items-center gap-2 text-sm text-foreground/55 transition-colors hover:text-foreground"
+                  >
+                    <span
+                      className={`h-1.5 w-1.5 rounded-full ${
+                        p.status === "building" ? "bg-accent" : "bg-yellow-400/70"
+                      }`}
+                    />
+                    <span className="font-medium">{p.name}</span>
+                    <span className="text-foreground/30 transition-colors group-hover/p:text-foreground/50">
+                      {p.domain}
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </section>
@@ -121,67 +206,99 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Currently building — LexRech */}
-      <section className="mx-auto max-w-4xl px-6 pb-12">
-        <div className="rounded-2xl border border-accent/20 bg-gradient-to-br from-accent/5 to-transparent p-10">
-          <div className="flex flex-col items-center text-center sm:flex-row sm:text-left sm:items-start sm:gap-8">
-            <div className="flex-1">
-              <p className="text-sm font-mono tracking-widest text-accent uppercase mb-2">
-                Currently building
-              </p>
-              <h2 className="text-2xl font-bold">LexRech</h2>
-              <p className="mt-3 text-sm leading-relaxed text-foreground/60">
-                A complete law firm management platform for the German market.
-                XRechnung invoicing, beA court integration, client portal, GDPR
-                compliance tools, DATEV export, and case management — everything
-                a law firm needs, on one platform.
-              </p>
-              <div className="mt-6 flex flex-wrap gap-3 justify-center sm:justify-start">
-                <a
-                  href="https://lexrech.de"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="rounded-full border border-accent/30 px-5 py-2 text-xs font-medium text-accent transition-all hover:bg-accent/10"
-                >
-                  Visit lexrech.de &rarr;
-                </a>
-                <Link
-                  href="/roadmap"
-                  className="rounded-full border border-card-border px-5 py-2 text-xs font-medium text-foreground/50 transition-all hover:border-accent/30 hover:text-accent"
-                >
-                  Full Roadmap
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Coming next — Quris */}
-      <section className="mx-auto max-w-4xl px-6 pb-24">
-        <div className="rounded-2xl border border-accent/20 bg-gradient-to-br from-accent/5 to-transparent p-10">
-          <div className="text-center sm:text-left">
-            <p className="text-sm font-mono tracking-widest text-accent uppercase mb-2">
-              Coming next
+      {/* The suite — shown, not just claimed */}
+      <section className="mx-auto max-w-6xl px-6 pb-24">
+        <div className="flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <p className="mb-2 font-mono text-sm tracking-widest text-accent uppercase">
+              What we&apos;re building
             </p>
-            <h2 className="text-2xl font-bold">
-              Quris — AI Medical Imaging for Prostate Cancer
+            <h2 className="text-2xl font-bold sm:text-3xl">
+              Five products, built in the open
             </h2>
-            <p className="mt-3 text-sm leading-relaxed text-foreground/60">
-              Deep-learning analysis of PSMA-PET/CT scans. Automated lesion
-              detection, TNM staging, and tumor burden quantification — cutting
-              manual scan analysis from ~30 minutes to under 1 minute, with an
-              interactive 3D web viewer and PACS integration.
-            </p>
-            <div className="mt-6 flex flex-wrap gap-3 justify-center sm:justify-start">
-              <Link
-                href="/products"
-                className="rounded-full border border-accent/30 px-5 py-2 text-xs font-medium text-accent transition-all hover:bg-accent/10"
-              >
-                View all products &rarr;
-              </Link>
-            </div>
           </div>
+          <Link
+            href="/products"
+            className="group/all inline-flex items-center gap-2 text-sm font-medium text-foreground/55 transition-colors hover:text-accent"
+          >
+            See all products
+            <span className="transition-transform duration-300 group-hover/all:translate-x-1">
+              &rarr;
+            </span>
+          </Link>
+        </div>
+
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {suite.map((p, i) => (
+            <Link
+              key={p.id}
+              href={`/products#${p.id}`}
+              /* First card spans two columns on wide screens — LexRech is the
+                 one actually in build, so it earns the extra room. */
+              className={`group/card flex flex-col overflow-hidden rounded-2xl border border-card-border bg-card-bg transition-all duration-500 hover:-translate-y-1 hover:border-accent/35 hover:shadow-[0_12px_40px_-12px_rgba(86,172,49,0.25)] ${
+                i === 0 ? "lg:col-span-2" : ""
+              }`}
+            >
+              {/* Media */}
+              <div className="relative overflow-hidden bg-black/40">
+                {p.shot ? (
+                  <div className={i === 0 ? "aspect-[2/1]" : "aspect-[16/10]"}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={p.shot}
+                      alt={p.shotAlt}
+                      loading="lazy"
+                      className="h-full w-full object-cover object-top transition-transform duration-[900ms] ease-out group-hover/card:scale-[1.04]"
+                    />
+                  </div>
+                ) : (
+                  <div className="flex aspect-[16/10] items-center justify-center">
+                    <div
+                      aria-hidden="true"
+                      className="absolute inset-0 opacity-[0.07]"
+                      style={{
+                        backgroundImage:
+                          "repeating-linear-gradient(90deg, rgba(86,172,49,1) 0 1px, transparent 1px 40px), repeating-linear-gradient(0deg, rgba(86,172,49,1) 0 1px, transparent 1px 40px)",
+                      }}
+                    />
+                    <p className="relative font-mono text-3xl font-black tracking-tight text-accent/25">
+                      OIS
+                    </p>
+                  </div>
+                )}
+              </div>
+
+              {/* Copy */}
+              <div className="flex flex-1 flex-col p-6">
+                <div className="flex flex-wrap items-baseline gap-x-2.5 gap-y-1.5">
+                  <h3 className="text-lg font-bold">{p.name}</h3>
+                  <span className="font-mono text-xs text-foreground/35">
+                    {p.domain}
+                  </span>
+                  {/* Status reads in the copy row — over a screenshot it was
+                      competing with whatever happened to be behind it. */}
+                  <span
+                    className={`ml-auto shrink-0 rounded-full border px-2 py-0.5 font-mono text-[0.6rem] tracking-wider uppercase ${
+                      p.status === "building"
+                        ? "border-accent/40 text-accent"
+                        : "border-yellow-400/35 text-yellow-400/90"
+                    }`}
+                  >
+                    {p.status === "building" ? "In development" : "Upcoming"}
+                  </span>
+                </div>
+                <p className="mt-2.5 text-sm leading-relaxed text-foreground/55">
+                  {p.blurb}
+                </p>
+                <span className="mt-4 inline-flex items-center gap-1.5 text-xs font-medium text-accent/80 transition-colors group-hover/card:text-accent">
+                  Take a look
+                  <span className="transition-transform duration-300 group-hover/card:translate-x-1">
+                    &rarr;
+                  </span>
+                </span>
+              </div>
+            </Link>
+          ))}
         </div>
       </section>
 
