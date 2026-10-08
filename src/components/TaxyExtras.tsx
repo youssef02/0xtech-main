@@ -72,7 +72,7 @@ export default function TaxyExtras() {
             Watch both screens, one real ride
           </span>
           <span className="block text-xs text-foreground/45">
-            Both handsets through one real ride in Oujda, booked to rated — 114s
+            One real ride in Oujda on both handsets — hailed, driven, paid, rated
           </span>
         </span>
       </button>
