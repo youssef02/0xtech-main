@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import OISMediaButtons from "@/components/OISMediaButtons";
 import TaxyShowcase from "@/components/TaxyShowcase";
+import TaxyExtras from "@/components/TaxyExtras";
 import ProductCarousel, { type Shot } from "@/components/ProductCarousel";
 import ProductNav from "@/components/ProductNav";
 
@@ -367,7 +368,10 @@ export default function Products() {
                 {/* Right: see it working */}
                 <div>
                   {product.showcase === "taxy" ? (
-                    <TaxyShowcase />
+                    <>
+                      <TaxyShowcase />
+                      <TaxyExtras />
+                    </>
                   ) : product.shots ? (
                     <ProductCarousel
                       shots={product.shots}
