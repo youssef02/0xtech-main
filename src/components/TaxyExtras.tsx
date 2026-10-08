@@ -72,7 +72,7 @@ export default function TaxyExtras() {
             Watch both screens, one real ride
           </span>
           <span className="block text-xs text-foreground/45">
-            Rider and driver side by side, recorded together in Oujda — 84s
+            Both handsets through one real ride in Oujda — 97s, captioned
           </span>
         </span>
       </button>
@@ -104,14 +104,14 @@ export default function TaxyExtras() {
         </ul>
       </div>
 
-      {/* Narrower than the default panel: the composite is portrait
-          (1140x1300), so a 5xl frame would surround it with black bars twice
-          as wide as either phone in it. */}
+      {/* The reel is 16:9 now. It used to be a 1140x1300 portrait slab of
+          two screens, which needed a narrow panel to avoid black bars twice
+          as wide as either phone; a widescreen frame wants the width back. */}
       <ModalShell
         open={videoOpen}
         onClose={() => setVideoOpen(false)}
         label="Taxy rider and driver demo"
-        panelClassName="max-w-2xl"
+        panelClassName="max-w-5xl"
       >
         <video
           src="/taxy-demo.mp4"
@@ -125,8 +125,8 @@ export default function TaxyExtras() {
         </video>
         <p className="border-t border-card-border px-5 py-3 text-xs text-foreground/50">
           One ride on two handsets, recorded together — request, accept,
-          pickup, trip, completion. Every map is live OpenStreetMap data and
-          every route comes from OSRM.
+          pickup, trip, completion. The maps are vector tiles and the routes
+          come from OSRM, both served from the same machine as the backend.
         </p>
       </ModalShell>
     </div>
