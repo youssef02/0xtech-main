@@ -32,7 +32,7 @@ const STEPS: Step[] = [
     alt: "Taxy ride selection showing Petit Taxi and VIP fares over a road-following route",
     label: "Choose a ride",
     caption:
-      "Pick your ride — metered Petit Taxi at 8.41 MAD, or VIP at 15.32 MAD.",
+      "Pick your ride — metered Petit Taxi at 8.79 MAD, or VIP at 16.07 MAD.",
     driver: "online",
   },
   {
@@ -57,7 +57,7 @@ const STEPS: Step[] = [
     alt: "Taxy ride in progress with ETA, distance and fare over the driving route",
     label: "In progress",
     caption:
-      "Ride in progress — 5 min and 2.9 km along the OSRM road-following route.",
+      "Ride in progress — 7 min and 3.5 km along the OSRM road-following route.",
     driver: "trip",
   },
   {
@@ -65,7 +65,7 @@ const STEPS: Step[] = [
     ms: 2800,
     alt: "Taxy trip summary showing distance, duration and total fare",
     label: "Complete",
-    caption: "Trip summary — 2.7 km, 5 min, 8.41 MAD, then rate the driver.",
+    caption: "Trip summary — 3.0 km, 5 min, 8.79 MAD, then rate the driver.",
     driver: "online",
   },
 ];
@@ -78,12 +78,12 @@ const DRIVER_FRAMES: Record<DriverState, { src: string; alt: string; label: stri
   },
   request: {
     src: "/products/taxy-drv-request.png",
-    alt: "Taxy driver app: new ride request for 8.41 MAD with a 25-second countdown, decline or accept",
-    label: "New request · 25s",
+    alt: "Taxy driver app: new ride request for MAD 8.79 with a 21-second countdown, decline or accept",
+    label: "New request · 21s",
   },
   pickup: {
     src: "/products/taxy-drv-pickup.png",
-    alt: "Taxy driver app: heading to pickup with a 00:20 timer and an 'Arrived at Pickup' action",
+    alt: "Taxy driver app: heading to pickup with an elapsed timer and an 'Arrived at Pickup' action",
     label: "Heading to pickup",
   },
   trip: {
